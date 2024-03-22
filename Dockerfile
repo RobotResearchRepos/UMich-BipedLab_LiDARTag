@@ -13,7 +13,7 @@ RUN apt-get update \
 # Binary package dependencies
 
 RUN apt-get update \
- && apt-get install -y libtbb-dev libnlopt-dev \
+ && apt-get install -y libtbb-dev \
  && rm -rf /var/lib/apt/lists/*
 
 # Library source dependencies
