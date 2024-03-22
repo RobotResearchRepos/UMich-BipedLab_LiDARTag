@@ -16,6 +16,12 @@ RUN apt-get update \
  && apt-get install -y libtbb-dev libnlopt-dev \
  && rm -rf /var/lib/apt/lists/*
 
+# Library source dependencies
+
+RUN git clone git://github.com/stevengj/nlopt \
+ && cd nlopt && mkdir build && cd build \
+ && cmake .. && make install && cd .. && rm -fr nlopt
+
 # Software package dependencies
 
 RUN  mkdir -p /catkin_ws/src
