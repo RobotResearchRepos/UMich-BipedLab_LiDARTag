@@ -18,7 +18,7 @@ RUN apt-get update \
 
 # Library source dependencies
 
-RUN git clone git://github.com/stevengj/nlopt \
+RUN git clone https://github.com/stevengj/nlopt \
  && cd nlopt && mkdir build && cd build \
  && cmake .. && make install && cd .. && rm -fr nlopt
 
