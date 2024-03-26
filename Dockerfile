@@ -46,3 +46,7 @@ RUN . /opt/ros/$ROS_DISTRO/setup.bash \
  && cd /catkin_ws \
  && catkin_make -j1
  
+# Source workspace
+RUN sed --in-place --expression \
+      '$isource "/catkin_ws/devel/setup.bash"' \
+      /ros_entrypoint.sh
