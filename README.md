@@ -1,5 +1,31 @@
 # LiDARTag
 
+## 0. Reproducible Package
+Prerequisites:
+* [Docker](https://docs.docker.com/engine/install/ubuntu/)
+* [NVIDIA-Docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+* [OSRF-Rocker](https://github.com/osrf/rocker)
+
+Please download the rosbag files from this [link](https://drive.google.com/drive/folders/19w13uJNMax9_fNIzmFZwzYq2LpJsjKKh?usp=sharing).
+
+**Terminal 1:**
+```
+rocker --env ROS_MASTER_URI=http://172.17.0.2:11311 \
+       --env ROS_IP=172.17.0.2 \
+       --nvidia --x11 \
+       ghcr.io/robotresearchrepos/umich-bipedlab_lidartag:release \
+       roslaunch lidartag LiDARTag_twotags.launch
+```
+
+**Terminal 2:**
+```
+docker run --rm -it --volume .:/bags \
+           --env ROS_MASTER_URI=http://172.17.0.2:11311 \
+           --env ROS_IP=172.17.0.3 \
+           ros:melodic-ros-core \
+           rosbag play /bags/robotics_cassie.bag
+```
+
 ## Overview
 This is a package for LiDARTag, described in paper: **LiDARTag: A Real-Time Fiducial Tag System for Point Clouds** ([PDF](./LiDARTag.pdf))([arXiv](https://arxiv.org/abs/1908.10349)). This work is accepted by IEEE Robotics and Automation Letters and published at ([here](https://ieeexplore.ieee.org/abstract/document/9392337)).
 
